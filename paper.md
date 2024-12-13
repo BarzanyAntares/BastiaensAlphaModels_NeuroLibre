@@ -338,23 +338,22 @@ Initially, we compared models within the alpha regime and explored different dyn
 ```{table} Table 2. Common parameters across models based on their biological interpretation.
 Certain parameters have a similar role and a biological interpretation associated with it that is comparable between the models. The additional parameters reflect the novelty and differences proposed by each model.
 
-| **Parameter**               | **JR**                | **MDF**               | **LW**                            | **RRW**                                |
-|-----------------------------|-----------------------|-----------------------|-----------------------------------|----------------------------------------|
-| **Firing threshold (mean)** | \( V_{0} \)          | --                    | \( \mu_{e,i} \)                  | \( \Theta \)                           |
-| **Threshold variability**   | \( 1/r \)            | --                    | \( \sigma_{e,i} \)               | \( \sigma' \)                          |
-| **Max firing rate**         | \( 2e_{0} \)         | --                    | \( S_{e,i}^{max} \)              | \( Q_{max} \)                          |
-| **Max EPSP amplitude**      | \( A \)              | \( H_{e} \)           | \( \Gamma_{e} \)                 | --                                     |
-| **Max IPSP amplitude**      | \( B \)              | \( H_{i} \)           | \( \Gamma_{i} \)                 | --                                     |
-| **Rate constants**          | \( a \), \( b \)     | \( \kappa_{e,i} \)    | \( \gamma_{e,i} \)               | --                                     |
-| **Connectivity**            | \( C_{1-4} \)       | \( \gamma_{1-4} \)    | \( N_{ee}^{\beta}, N_{ei}^{\beta}, N_{ie}^{\beta}, N_{ii}^{\beta} \) | \( \nu_{ee}, \nu_{ei}, \nu_{es}, \nu_{se}, \nu_{sr}, \nu_{rs}, \nu_{re}, \nu_{sn} \) |
-| **Sigmoid shape**           | --                   | \( \rho_{1}, \rho_{2} \) | --                            | --                                     |
-| **Decay and rise time**     | --                   | --                    | --                                | \( \frac{1}{\alpha}, \frac{1}{\beta} \) |
-| **Corticothalamic delay**   | --                   | --                    | --                                | \( t_{0} \)                            |
-| **Damping rate**            | --                   | --                    | --                                | \( \gamma_{e} \)                       |
-| **Membrane decay**          | --                   | --                    | \( \gamma_{e,i} \)               | --                                     |
-| **Resting potential**       | --                   | --                    | \( h_{e,i}^{rest} \)             | --                                     |
-| **Equilibrium potential**   | --                   | --                    | \( h_{e,i}^{eq} \)               | --                                     |
-
+```{table} Common Parameters Across Models
+| **Parameter**                     | **JR**            | **MDF**                           | **LW**                          | **RRW**                      |
+|-----------------------------------|-------------------|------------------------------------|----------------------------------|------------------------------|
+| Firing threshold (mean)           | $V_{0}$          | --                                 | $\mu_{e,i}$                     | $\Theta$                    |
+| Firing threshold variability      | $\frac{1}{r}$    | --                                 | $\sigma_{e,i}$                  | $\sigma'$                   |
+| Maximum firing rate               | $2e_{0}$         | --                                 | $S_{e,i}^{max}$                 | $Q_{max}$                   |
+| Maximum EPSP amplitude            | $A$              | $H_{e}$                            | $\Gamma_{e}$                    | --                          |
+| Maximum IPSP amplitude            | $B$              | $H_{i}$                            | $\Gamma_{i}$                    | --                          |
+| Rate constants                    | $a$ and $b$      | $\kappa_{e}$ and $\kappa_{i}$      | $\gamma_{e,i}$                  | --                          |
+| Connectivity                      | $C_{1}, C_{2}, C_{3}, C_{4}$ | $\gamma_{1}, \gamma_{2}, \gamma_{3}, \gamma_{4}$ | $N_{ee}^{\beta}, N_{ei}^{\beta}, N_{ie}^{\beta}, N_{ii}^{\beta}$ | $\nu_{ee}, \nu_{ei}, \nu_{es}, \nu_{se}$ |
+| Additional parameters             | $\nu_{sr}, \nu_{rs}, \nu_{re}, \nu_{sn}$ | -- | -- | -- |
+| Sigmoid shape                     | --               | $\rho_{1}, \rho_{2}$               | --                               | --                          |
+| Decay and rise time               | --               | --                                 | --                               | $\frac{1}{\alpha},\frac{1}{\beta}$ |
+| Corticothalamic loop delay        | --               | --                                 | --                               | $t_{0}$                     |
+| Cortical damping rate             | --               | --                                 | --                               | $\gamma_{e}$                |
+```
 
 NPMs typically include both excitatory and inhibitory neurons. For example, LW, with a single excitatory and inhibitory population, captures excitatory-inhibitory balance and includes synaptic reversal potentials and transmitter kinetics like fast AMPA and GABA. JR adds an excitatory population, resulting in three neural populations and reflecting Katznelson's approach to explore long-range excitatory connections [@katznelson1981normal;@jansen1993neurophysiologically]. MDF introduces an inhibitory self-connection to account for high-frequency oscillations [@moran2007neural], while RRW, with four neural populations, includes cortical and thalamic neurons and features complex connectivities. All models use second-order differential equations combined with a nonlinear operator for synaptic processes. JR does not separately simulate EPSPs and IPSPs for pyramidal cells, unlike MDF, which includes recurrent inhibitory connections and additional differential equations. MDF also features a richer sigmoid function definition with parameters $\rho_{1}$ and $\rho_{2}$ for voltage sensitivity and position, and adaptation currents through parameter $a$. LW is more complex due to an additional block converting postsynaptic potentials into soma membrane potential and includes fast neurotransmitter kinetics. RRW describes firing behavior using a damped wave equation for cortical excitatory populations, adding an additional $\phi_e$ term for average pulse density. Understanding the role and rationale of different parameters is essential for making models biophysically meaningful. S.9 includes parameter tables and their biological meanings. While all the models share common components, MDF allows easier modulation of the sigmoid function shape, and RRW introduces corticothalamic interaction parameters. 
 LW incorporates synaptic reversal potentials, distinguishing its dynamic transformation of postsynaptic to soma membrane potentials.
